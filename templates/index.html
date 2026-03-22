@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Data Usage Advisor</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-icon">📡</span>
+        <span class="logo-text">DataAdvisor<span class="logo-ai">AI</span></span>
+      </div>
+      <nav>
+        <a href="#" class="nav-item active" data-tab="analyze">
+          <span>🔍</span> Analyze
+        </a>
+        <a href="#" class="nav-item" data-tab="whatif">
+          <span>🔮</span> What-If
+        </a>
+        <a href="#" class="nav-item" data-tab="history">
+          <span>📋</span> History
+        </a>
+      </nav>
+      <div class="sidebar-footer">Next-Gen Networks</div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- ANALYZE TAB -->
+      <section class="tab active" id="tab-analyze">
+        <div class="page-header">
+          <h1>Data Usage Analyzer</h1>
+          <p>Enter your daily internet habits and get AI-powered insights.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="card form-card">
+            <h2>Your Usage Profile</h2>
+            <form id="analyzeForm">
+
+              <div class="form-group">
+                <label for="daily_hours">Daily Internet Usage</label>
+                <div class="input-row">
+                  <input type="range" id="daily_hours" min="0" max="24" step="0.5" value="4" />
+                  <span class="range-val" id="daily_hours_val">4 hrs</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Video Streaming</label>
+                <div class="toggle-group">
+                  <button type="button" class="toggle-btn active" data-val="1" id="stream-yes">Yes</button>
+                  <button type="button" class="toggle-btn" data-val="0" id="stream-no">No</button>
+                </div>
+                <input type="hidden" id="streams_video" value="1" />
+              </div>
+
+              <div class="form-group">
+                <label for="num_downloads">Daily Downloads</label>
+                <div class="input-row">
+                  <input type="range" id="num_downloads" min="0" max="50" step="1" value="3" />
+                  <span class="range-val" id="num_downloads_val">3 files</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="social_media_hours">Social Media Usage</label>
+                <div class="input-row">
+                  <input type="range" id="social_media_hours" min="0" max="12" step="0.5" value="2" />
+                  <span class="range-val" id="social_media_hours_val">2 hrs</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary" id="analyzeBtn">
+                <span class="btn-icon">⚡</span> Analyze My Usage
+              </button>
+            </form>
+          </div>
+
+          <!-- Result card -->
+          <div class="card result-card" id="resultCard" style="display:none">
+            <h2>Analysis Result</h2>
+
+            <div class="gauge-wrap">
+              <div class="gauge" id="gauge">
+                <div class="gauge-fill" id="gaugeFill"></div>
+                <div class="gauge-center">
+                  <span class="gauge-gb" id="gaugeGb">--</span>
+                  <span class="gauge-label">GB/day</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="risk-badge" id="riskBadge">--</div>
+
+            <div class="advice-box" id="adviceBox"></div>
+
+            <button class="btn-secondary" id="whatifBtn">
+              🔮 Run What-If Simulations
+            </button>
+          </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading" style="display:none">
+          <div class="spinner"></div>
+          <p>Analyzing your usage patterns...</p>
+        </div>
+      </section>
+
+      <!-- WHAT-IF TAB -->
+      <section class="tab" id="tab-whatif">
+        <div class="page-header">
+          <h1>What-If Simulator</h1>
+          <p>See how changing your habits affects your data usage.</p>
+        </div>
+        <div id="whatifContent">
+          <div class="empty-state">
+            <span>🔮</span>
+            <p>Run an analysis first to unlock simulations.</p>
+            <button class="btn-primary" onclick="switchTab('analyze')">Go to Analyze</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- HISTORY TAB -->
+      <section class="tab" id="tab-history">
+        <div class="page-header">
+          <h1>Session History</h1>
+          <p>All analyses from this session.</p>
+        </div>
+        <div id="historyContent">
+          <div class="empty-state">
+            <span>📋</span>
+            <p>No analyses yet. Run your first analysis to see history here.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
