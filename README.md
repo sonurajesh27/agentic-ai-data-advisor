@@ -1,4 +1,4 @@
-# Agentic AI Data Usage Advisor for Next-Generation Networks
+# Agentic AI Data Usage Advisor 
 
 An intelligent AI agent that analyzes your internet usage patterns and provides personalized recommendations to optimize data consumption.
 
